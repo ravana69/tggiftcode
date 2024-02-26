@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telegram Gift Code Generator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  #code {
+    font-size: 24px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Telegram Gift Code Generator</h1>
+  <div id="code"></div>
+  <button onclick="generateGiftCode()">Generate Gift Code</button>
+</div>
+
+<script>
+function generateGiftCode() {
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var codeLength = 16;
+  var code = 'https://t.me/giftcode/';
+  var underscorePosition = Math.floor(Math.random() * (codeLength - 1)) + 1; // Randomly choose the position of underscore
+  for (var i = 0; i < codeLength; i++) {
+    if (i === underscorePosition) {
+      code += '_'; // Add underscore at the chosen position
+    }
+    var randomIndex = Math.floor(Math.random() * chars.length);
+    code += chars.substring(randomIndex, randomIndex + 1);
+  }
+  document.getElementById('code').textContent = code;
+}
+</script>
+</body>
+</html>
